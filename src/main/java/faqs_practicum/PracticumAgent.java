@@ -2,8 +2,13 @@ package faqs_practicum;
 
 import jade.core.Agent;
 
-public class IndexerAgent extends Agent{
+public class PracticumAgent extends Agent{
 
+	/*
+	 * 	Notas:
+	 *	Usamos Apache Lucene como motor de Information Retrieval, esta basado en un indice invertido
+	 */
+	
 	@Override
 	protected void setup() {
 		System.out.println("Agente inicializado. AID: " + this.getAID());
@@ -18,9 +23,14 @@ public class IndexerAgent extends Agent{
 			indexDirectory = (String) args[1];
 		}
 		System.out.println("Usando rutas:\nJson = " + jsonDirectory + "\nIndex = " + indexDirectory);
+	
+		//Agregamos el comportamiento de Indexing (pobla la base de datos)
+		IndexingBehaviour indexingBehaviour = new IndexingBehaviour(jsonDirectory, indexDirectory);
+		addBehaviour(indexingBehaviour);
 		
-		IndexingBehaviour behaviour = new IndexingBehaviour(jsonDirectory, indexDirectory);
-		addBehaviour(behaviour);
+		//Agregamos el comportamiento de Busqueda
+		SearchBehaviour searchBehaviour = new SearchBehaviour(indexDirectory);
+		addBehaviour(searchBehaviour);
 	}
 	
 	@Override

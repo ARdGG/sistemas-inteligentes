@@ -23,12 +23,11 @@ import org.json.JSONObject;
 import jade.core.behaviours.OneShotBehaviour;
 
 class IndexingBehaviour extends OneShotBehaviour {
+	
 	/*
-	 * Notas de implementación:
-	 * 	OneShotBehaviour: el agente solo debe realizar la indexacion (cargar en los documentos la bbdd)
-	 *	una unica vez
-	 *	Usamos Apache Lucene como motor de Information Retrieval, esta basado en un indice invertido
-	 * 
+	 * OneShotBehaviour: 
+	 * El agente solo debe realizar la indexacion (cargarlos documentos en la bbdd) una unica vez.
+	 * Al inicio de su creación
 	 */
 	
 	private String jsonDirectory;	//Directorio fuente de FAQs en formato JSON
@@ -39,7 +38,7 @@ class IndexingBehaviour extends OneShotBehaviour {
 		this.indexDirectory = indexDirectory;
 	}
 	
-	
+	@Override
 	public void action() {
 		
 		try(IndexWriter indexWriter = connectToLucene()){

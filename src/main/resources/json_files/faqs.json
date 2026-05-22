@@ -1,0 +1,182 @@
+[
+	{
+		"id":1,
+  		"pregunta":"¿Qué es el Practicum?",
+		"respuesta":"El Practicum es una asignatura de 12 ECTS que forma parte de la materia Optatividad de 4º curso. Consiste en realizar prácticas en una empresa real bajo la supervisión de un tutor académico y un tutor profesional.",
+		"categoria":"descripcion"
+	},
+  	{
+		"id":2,
+		"pregunta":"¿Cuántos créditos tiene el Practicum?",
+		"respuesta":"El Practicum es una asignatura de 12 ECTS.",
+		"categoria":"descripcion"
+	},
+  	{
+		"id":3,
+		"pregunta":"¿En qué curso se puede cursar el Practicum?",
+		"respuesta":"Para Grado en Ingeniería Informática y Grado en Ciencia de Datos e IA se puede cursar en el 7º o 8º semestre. Para el Doble Grado Informática+ADE se cursa en el 9º o 10º semestre (preferentemente en el 10º).",
+		"categoria":"descripcion"
+	},
+ 	{
+		"id":4,
+		"pregunta":"¿Qué requisitos necesito para hacer el Practicum en Ingeniería Informática?",
+		"respuesta":"Debes haber superado el 50% de los créditos del grado y haber matriculado todas las asignaturas obligatorias y básicas de cursos anteriores.",
+		"categoria":"requisitos"
+	},
+ 	{
+		"id":5,
+		"pregunta":"¿Qué requisitos necesito para el Practicum en Matemáticas e Informática?",
+		"respuesta":"Debes haber completado 120 ECTS correspondientes a asignaturas básicas y obligatorias de los dos primeros cursos.",
+		"categoria":"requisitos"
+	},
+  	{
+		"id":6,
+		"pregunta":"¿Cuántas horas de prácticas hay que realizar?",
+		"respuesta":"Las horas a realizar en la empresa son 27 horas por ECTS. Como el Practicum es de 12 ECTS, son necesarias 324 horas de prácticas en total en la empresa.",
+		"categoria":"horas"
+	},
+  	{
+		"id":7,
+		"pregunta":"¿Cuántas horas semanales como máximo puedo hacer en el Practicum?",
+		"respuesta":"Con carácter general las prácticas externas tienen una dedicación máxima de 25 horas semanales.",
+		"categoria":"horas"
+	},
+  	{
+		"id":8,
+		"pregunta":"¿Cuándo empieza y termina el Practicum del primer semestre?",
+		"respuesta":"Las fechas de estancia en la empresa para el 1er semestre del curso 2026/2027 son del 14 de septiembre al 18 de diciembre de 2026.",
+		"categoria":"calendario"
+	},
+  	{
+		"id":9,
+		"pregunta":"¿Cuándo empieza y termina el Practicum del segundo semestre?",
+		"respuesta":"Las fechas de estancia en la empresa para el 2º semestre del curso 2025/26 son del 23 de febrero al 29 de mayo de 2026.",
+		"categoria":"calendario"
+	},
+  	{
+		"id":10,
+		"pregunta":"¿Cuándo tengo que presentar la muestra de interés para el primer semestre?",
+		"respuesta":"Del 1 al 30 de abril si deseas realizarlo en el 1er semestre (de septiembre a diciembre).",
+		"categoria":"plazos"
+	},
+  	{
+		"id":11,
+		"pregunta":"¿Cuándo tengo que presentar la muestra de interés para el segundo semestre?",
+		"respuesta":"Del 1 al 30 de noviembre si deseas realizarlo en el 2º semestre (de febrero a junio).",
+		"categoria":"plazos"
+	},
+  	{
+		"id":12,
+		"pregunta":"¿Cómo presento la muestra de interés?",
+		"respuesta":"A través del enlace https://short.upm.es/3vo6s, adjuntando también tu Curriculum Vitae.",
+		"categoria":"procedimiento"
+	},
+  	{
+		"id":13,
+		"pregunta":"¿Cuál es el plazo para entregar el Proyecto Practicum?",
+		"respuesta":"El estudiante debe presentar el Proyecto Practicum antes del 17 de junio de 2026 (incluido), a través del enlace habilitado para ello.",
+		"categoria":"plazos"
+	},
+  	{
+		"id":14,
+		"pregunta":"¿Qué es el Proyecto Practicum y qué debe incluir?",
+		"respuesta":"Es un documento previo a la matrícula que describe los objetivos de la estancia, condiciones y la labor a desarrollar durante el periodo de Practicum. Debe estar firmado por el tutor de la empresa y el propio estudiante.",
+		"categoria":"documentacion"
+	},
+  	{
+		"id":15,
+		"pregunta":"¿Qué pasos debo seguir para buscar empresa de prácticas?",
+		"respuesta":"Debes entrar en https://practicas-externas.upm.es/, marcar búsqueda activa, subir tu CV, subir la factura del seguro de movilidad nacional y obtener firma electrónica FNMT si no la tuvieras.",
+		"categoria":"procedimiento"
+	},
+  	{
+		"id":16,
+		"pregunta":"¿Es obligatorio el seguro de movilidad?",
+		"respuesta":"Sí, el seguro de movilidad nacional es obligatorio e imprescindible para formalizar el convenio de prácticas. Debes subir la factura en PDF a la plataforma de prácticas. Puedes contratarlo en http://www.disser.es/segurouniversidadpolitecnicamadrid/",
+		"categoria":"requisitos"
+	},
+  	{
+		"id":17,
+		"pregunta":"¿Necesito firma electrónica para el Practicum?",
+		"respuesta":"Sí, es imprescindible disponer de firma electrónica de la FNMT para firmar el anexo del convenio a través del portafirmas de la UPM. También necesitarás tener instalado el programa Autofirma en el ordenador desde el que firmes.",
+		"categoria":"requisitos"
+	},
+  	{
+		"id":18,
+		"pregunta":"¿Quién asigna el tutor académico?",
+		"respuesta":"La OREX (Oficina de Relaciones Externas) asignará un tutor académico, profesor de la titulación, que hará el seguimiento del desarrollo del Practicum después de que el estudiante se matricule.",
+		"categoria":"tutores"
+	},
+  	{
+		"id":19,
+		"pregunta":"¿Cuál es la función del tutor académico?",
+		"respuesta":"El tutor académico asesora metodológicamente y técnicamente sobre procedimientos de gestión de la práctica: fechas, formularios, viabilidad de tareas. Supervisa que las tareas encomendadas sean adecuadas para la titulación y orienta al estudiante antes y durante la estancia.",
+		"categoria":"tutores"
+	},
+  	{
+		"id":20,
+		"pregunta":"¿Cuál es la función del tutor profesional?",
+		"respuesta":"El tutor profesional guía, supervisa y asesora al estudiante en la empresa. Debe acogerle, facilitar su integración, proporcionar formación complementaria, supervisar sus actividades y emitir informes de evaluación intermedio y final.",
+		"categoria":"tutores"
+	},
+  	{
+		"id":21,
+		"pregunta":"¿Qué informes hay que entregar al final del Practicum?",
+		"respuesta":"Hay tres informes: el informe del tutor profesional, el informe final del estudiante y el informe del tutor académico. Para el 2º semestre 2025/26, los informes del tutor profesional y del estudiante deben entregarse antes del 22 de mayo de 2026, y el del tutor académico antes del 12 de junio de 2026.",
+		"categoria":"evaluacion"
+	},
+  	{
+		"id":22,
+		"pregunta":"¿Qué debe incluir el informe final del estudiante?",
+		"respuesta":"El informe debe incluir datos personales, descripción de las tareas desarrolladas, valoración de competencias adquiridas, problemas planteados y su resolución, aprendizajes obtenidos, un diario de actividad, análisis de las condiciones de trabajo y una valoración personal de la experiencia.",
+		"categoria":"evaluacion"
+	},
+  	{
+		"id":23,
+		"pregunta":"¿Cómo es la presentación final del Practicum?",
+		"respuesta":"La presentación consiste en entregar una tarea en Moodle con una presentación PowerPoint con voz grabada de duración máxima 10 minutos. Se recomienda formato .ppsx, que no debe superar 20MB. El plazo de entrega para el 2º semestre 2025/26 es el 15 de junio de 2026.",
+		"categoria":"evaluacion"
+	},
+  	{
+		"id":24,
+		"pregunta":"¿Quién evalúa el Practicum?",
+		"respuesta":"El trabajo de cada alumno es evaluado por su tutor académico y dos profesores de la comisión de la asignatura. Se tienen en cuenta la presentación oral, los informes de los tutores y la memoria final del estudiante. Un tribunal designado por el Director de la Escuela emite las actas finales.",
+		"categoria":"evaluacion"
+	},
+  	{
+		"id":25,
+		"pregunta":"¿Qué es la OREX?",
+		"respuesta":"La OREX es la Oficina de Relaciones Externas de la ETSIINF. Da apoyo y asesoría en la realización del Practicum: ayuda en la búsqueda de empresas, controla el desarrollo de las prácticas y asesora a todas las partes en los aspectos metodológicos.",
+		"categoria":"organizacion"
+	},
+  	{
+		"id":26,
+		"pregunta":"¿Dónde puedo ver las ofertas de empresas para el Practicum?",
+		"respuesta":"En el portal https://practicas-externas.upm.es/ encontrarás todas las ofertas vigentes, tanto de prácticas curriculares como extracurriculares.",
+		"categoria":"procedimiento"
+	},
+  	{
+		"id":27,
+		"pregunta":"¿La empresa puede ser cualquiera?",
+		"respuesta":"No. La UPM debe tener firmado y vigente un Convenio de Cooperación Educativa con la empresa. Puedes consultar las empresas colaboradoras en https://practicas-externas.upm.es/",
+		"categoria":"procedimiento"
+	},
+  	{
+		"id":28,
+		"pregunta":"¿Cuándo me matriculo del Practicum?",
+		"respuesta":"La asignatura Practicum se matricula por el sistema de automatrícula junto con el resto de las asignaturas, en el semestre en que se realizará. La matrícula está restringida a los estudiantes que cumplan los requisitos y hayan recibido la aprobación de la Comisión de Prácticas Externas.",
+		"categoria":"matricula"
+	},
+  	{
+		"id":29,
+		"pregunta":"¿Qué valora el tutor profesional en su informe?",
+		"respuesta":"El tutor profesional evalúa capacidad técnica, capacidad de aprendizaje, administración de trabajos, habilidades de comunicación, sentido de la responsabilidad, adaptación, creatividad, implicación personal, motivación, receptividad a las críticas, puntualidad, relaciones laborales y capacidad de trabajo en equipo.",
+		"categoria":"evaluacion"
+	},
+  	{
+		"id":30,
+		"pregunta":"¿Qué pasa si la empresa no cumple las condiciones del Practicum?",
+		"respuesta":"Es responsabilidad exclusiva del estudiante asegurarse, antes de la matrícula, de que la práctica cubrirá el tiempo necesario. La OREX ayuda en la gestión, pero no es responsable del cumplimiento de las condiciones por parte de la empresa ni del estudiante.",
+		"categoria":"procedimiento"
+	}
+]

@@ -53,6 +53,7 @@ public class SearchBehaviour extends CyclicBehaviour {
 		System.out.println("Mensaje recibido de " + message.getSender().getLocalName() + ": " + userQuery);
 		
 		String answer = searchFaq(userQuery);
+		System.out.println("Respuesta a mensaje de" + message.getSender().getLocalName() + ": " + answer);
 		sendReply(message, answer);
 	}
 	

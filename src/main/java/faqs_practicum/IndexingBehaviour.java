@@ -15,6 +15,7 @@ import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.json.JSONArray;
@@ -69,6 +70,8 @@ class IndexingBehaviour extends OneShotBehaviour {
 	private IndexWriter connectToLucene() throws IOException{
 		Analyzer analyzer = new StandardAnalyzer();
 		IndexWriterConfig config = new IndexWriterConfig(analyzer);
+		config.setOpenMode(OpenMode.CREATE);//Borra los indices que hayan antes
+		
 		Directory directory = FSDirectory.open(Paths.get(this.indexDirectory));
 		return new IndexWriter(directory, config);
 

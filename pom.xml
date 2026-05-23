@@ -36,7 +36,7 @@
     </build>
     <profiles>
         <profile>
-            <id>run_indexer</id>
+            <id>run_practicum</id>
             <build>
                 <plugins>
                     <plugin>
@@ -47,7 +47,7 @@
                             <mainClass>jade.Boot</mainClass>
                             <arguments>
                                 <argument>-gui</argument>
-                                <argument>agenteIndexador:faqs_practicum.IndexerAgent</argument>
+                                <argument>agentePracticum:faqs_practicum.PracticumAgent</argument>
                             </arguments>
                         </configuration>
                     </plugin>
@@ -55,7 +55,7 @@
             </build>
         </profile>
         <profile>
-            <id>run_indexer_2</id>
+            <id>run_file</id>
             <build>
                 <plugins>
                     <plugin>

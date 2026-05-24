@@ -1,1 +1,10 @@
-/target/
+# Compilados de Maven
+target/
+*.class
+
+# Ficheros generados por JADE al ejecutar
+APDescription.txt
+MTPs-*.txt
+
+# Índice de Lucene
+src/main/resources/lucene_index/

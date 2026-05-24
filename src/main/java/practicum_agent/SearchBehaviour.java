@@ -1,4 +1,4 @@
-package faqs_practicum;
+package practicum_agent;
 
 import java.io.IOException;
 import java.nio.file.Paths;

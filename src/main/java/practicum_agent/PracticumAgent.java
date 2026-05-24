@@ -1,4 +1,4 @@
-package faqs_practicum;
+package practicum_agent;
 
 import base_agent.AgentBase;
 import base_agent.AgentModel;

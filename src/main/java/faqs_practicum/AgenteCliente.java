@@ -1,5 +1,6 @@
 ﻿package faqs_practicum;
 
+import es.upm.AgentLauncher.Utils;
 import jade.core.Agent;
 
 import jade.core.behaviours.CyclicBehaviour;
@@ -38,7 +39,7 @@ public class AgenteCliente extends Agent {
                 case 0:
                     gui.getFrame().getRespuestaResumenTexto().setText("");
                     System.out.println("ComportamientoUsuario Resumen");
-                    //Intruccion de envio de mensaje
+                    Utils.enviarMensaje(myAgent,"Resumen",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
                     temp = procesarMensaje(msg);
                     gui.getFrame().getRespuestaResumenTexto().setText(temp);
@@ -46,6 +47,7 @@ public class AgenteCliente extends Agent {
                 case 1:
                     gui.getFrame().getRespuestaPracticumTexto().setText("");
                     System.out.println("ComportamientoUsuario Practicum");
+                    Utils.enviarMensaje(myAgent,"Practicum",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
                     temp = procesarMensaje(msg);
                     gui.getFrame().getRespuestaPracticumTexto().setText(temp);
@@ -53,6 +55,7 @@ public class AgenteCliente extends Agent {
                 case 2:
                     gui.getFrame().getRespuestaLlegarTexto().setText("");
                     System.out.println("ComportamientoUsuario Llegar");
+                    Utils.enviarMensaje(myAgent,"Rutas",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
                     temp = procesarMensaje(msg);
                     gui.getFrame().getRespuestaLlegarTexto().setText(temp);

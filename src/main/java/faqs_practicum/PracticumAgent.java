@@ -1,8 +1,11 @@
 package faqs_practicum;
 
+import es.upm.AgentLauncher.AgentBase;
+import es.upm.AgentLauncher.AgentModel;
+
 import jade.core.Agent;
 
-public class PracticumAgent extends Agent{
+public class PracticumAgent extends AgentBase{
 
 	/*
 	 * 	Notas:
@@ -12,6 +15,9 @@ public class PracticumAgent extends Agent{
 	@Override
 	protected void setup() {
 		System.out.println("Agente inicializado. AID: " + this.getAID());
+		
+		this.type = AgentModel.PRACTICUM;
+		registerAgentDF();
 		
 		//Valores por defecto 
 		String jsonDirectory = "src/main/resources/json_files";

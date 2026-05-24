@@ -1,4 +1,4 @@
-﻿package faqs_practicum;
+﻿package user_agent;
 
 public class MainGUI extends Thread {
 

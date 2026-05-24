@@ -1,4 +1,4 @@
-package es.upm.AgentLauncher;
+package base_agent;
 
 import jade.content.lang.sl.SLCodec;
 import jade.core.Agent;

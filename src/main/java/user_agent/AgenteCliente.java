@@ -1,6 +1,5 @@
-﻿package faqs_practicum;
+﻿package user_agent;
 
-import es.upm.AgentLauncher.Utils;
 import jade.core.Agent;
 
 import jade.core.behaviours.CyclicBehaviour;
@@ -9,6 +8,8 @@ import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
 import java.util.List;
+
+import base_agent.Utils;
 
 public class AgenteCliente extends Agent {
 

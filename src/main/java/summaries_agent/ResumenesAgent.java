@@ -1,4 +1,4 @@
-package resumenes_asignaturas;
+package summaries_agent;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAException;

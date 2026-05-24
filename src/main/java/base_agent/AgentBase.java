@@ -1,4 +1,4 @@
-package es.upm.AgentLauncher;
+package base_agent;
 
 import jade.core.Agent;
 import jade.domain.DFService;

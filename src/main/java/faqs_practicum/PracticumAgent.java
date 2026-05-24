@@ -5,7 +5,7 @@ import es.upm.AgentLauncher.AgentModel;
 
 import jade.core.Agent;
 
-public class PracticumAgent extends AgentBase{
+public class PracticumAgent extends AgentBase {
 
 	/*
 	 * 	Notas:

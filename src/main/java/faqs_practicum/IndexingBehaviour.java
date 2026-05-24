@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 import jade.core.behaviours.OneShotBehaviour;
 
-class IndexingBehaviour extends OneShotBehaviour {
+public class IndexingBehaviour extends OneShotBehaviour {
 	
 	/*
 	 * OneShotBehaviour: 

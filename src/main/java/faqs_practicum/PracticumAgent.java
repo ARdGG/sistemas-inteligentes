@@ -35,7 +35,7 @@ public class PracticumAgent extends Agent{
 	
 	@Override
 	protected void takeDown() {
-		System.out.println("Lo lamento...");
+		System.out.println("Lo lamento... 8==D");
 	}
 	
 }

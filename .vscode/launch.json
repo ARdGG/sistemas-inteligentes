@@ -1,0 +1,24 @@
+{
+  /*"version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "JADE (solo plataforma)",
+      "request": "launch",
+      "mainClass": "jade.Boot",
+      "args": "-gui"
+    }
+  ]*/
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "JADE + ResumenesAgent",
+      "request": "launch",
+      "mainClass": "jade.Boot",
+      "args": "-gui resumen:resumenes_asignaturas.ResumenesAgent"
+    }
+  ]
+
+}
+

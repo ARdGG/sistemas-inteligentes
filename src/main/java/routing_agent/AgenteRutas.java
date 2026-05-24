@@ -1,7 +1,12 @@
 package routing_agent;
 
+import jade.content.lang.sl.SLCodec;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
@@ -11,14 +16,28 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static base_agent.Utils.enviarMensaje;
+
 public class AgenteRutas extends Agent {
     @Override
     protected void setup() {
+        DFAgentDescription dfd = new DFAgentDescription();
+        dfd.setName(getAID());
+        ServiceDescription sd = new ServiceDescription();
+        sd.setName("Obtener ruta hasta la escuela");
+        sd.setType("Ruta");
+        sd.addOntologies("ontologia");
+        sd.addLanguages(new SLCodec().getName());
+        dfd.addServices(sd);
+        try{
+            DFService.register(this,dfd);
+        } catch (FIPAException e) {
+            throw new RuntimeException(e);
+        }
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {
                 try {
-                    String lugar;
                     ACLMessage msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
                     if (msg == null) {
                         return; // lanzar error
@@ -52,10 +71,11 @@ public class AgenteRutas extends Agent {
                     while ((line = br.readLine()) != null) {
                         result.append(line);
                     }
-                    System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result.toString());
+                    System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result);
                     // Send result.toString()
+                    enviarMensaje(this.getAgent(),"Mostrar ruta",result.toString());
                 } catch (Exception ex) {
-
+                    System.err.println("error en agenteRutas");
                 }
             }
         });

@@ -1,7 +1,10 @@
 package practicum_agent;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -49,7 +52,13 @@ public class SearchBehaviour extends CyclicBehaviour {
 	 * Extrae el contenido del mensaje recibido, realiza la busqueda y envia la respuesta al remitente 
 	 */
 	private void processIncomingMesage(ACLMessage message) {
-		String userQuery = message.getContent();
+		String userQuery;
+		try {
+			userQuery = (String) message.getContentObject();
+		} catch (UnreadableException e) {
+			//Si no sigue el protocolo intenta leer como texto plano
+			userQuery = message.getContent();
+		}
 		System.out.println("Mensaje recibido de " + message.getSender().getLocalName() + ": " + userQuery);
 		
 		String answer = searchFaq(userQuery);
@@ -118,9 +127,17 @@ public class SearchBehaviour extends CyclicBehaviour {
 	 * Crea un mensaje de respuesta de tipo INFORM y lo envia
 	 */
 	private void sendReply(ACLMessage message, String answer) {
-		ACLMessage reply = message.createReply();
-		reply.setPerformative(ACLMessage.INFORM);
-		reply.setContent(answer);
-		myAgent.send(reply);
+		try {
+			ACLMessage reply = message.createReply();
+			reply.setPerformative(ACLMessage.INFORM);
+			
+			List<String> response = new ArrayList<>();
+			response.add(answer);
+			reply.setContentObject((Serializable) response);
+			
+			myAgent.send(reply);
+		} catch (IOException e) {
+			System.out.println("Error al serializar respuesta: " + e.getMessage());
+		}
 	}
 }

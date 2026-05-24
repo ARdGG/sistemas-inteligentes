@@ -16,8 +16,7 @@
       "name": "JADE + ResumenesAgent",
       "request": "launch",
       "mainClass": "jade.Boot",
-      "args": "-gui resumen:resumenes_asignaturas.ResumenesAgent"
-    }
+      "args": "-gui cliente:faqs_practicum.AgenteCliente;practicum:faqs_practicum.PracticumAgent;resumen:resumenes_asignaturas.ResumenesAgent"    }
   ]
 
 }

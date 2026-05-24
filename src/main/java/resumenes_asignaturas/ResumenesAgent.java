@@ -15,6 +15,7 @@ public class ResumenesAgent extends Agent{
 		String guiasDirectory = "src/main/resources/guias";
 		
 		Object[] args = getArguments();
+        
 		if(args != null && args.length >= 1) {
 			guiasDirectory = (String) args[0];
 		}
@@ -22,7 +23,7 @@ public class ResumenesAgent extends Agent{
 		
         //Configurar agente
         ServiceDescription sd = new ServiceDescription();
-        sd.setType("resumen-asignaturas");
+        sd.setType("Resumen");
         sd.setName(getLocalName());
         DFAgentDescription dfdescription = new DFAgentDescription();
         dfdescription.setName(getAID());

@@ -1,4 +1,4 @@
-package faqs_practicum;
+package practicum_agent;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 import jade.core.behaviours.OneShotBehaviour;
 
-class IndexingBehaviour extends OneShotBehaviour {
+public class IndexingBehaviour extends OneShotBehaviour {
 	
 	/*
 	 * OneShotBehaviour: 

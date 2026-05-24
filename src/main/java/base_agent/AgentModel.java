@@ -1,4 +1,4 @@
-package es.upm.AgentLauncher;
+package base_agent;
 
 public enum AgentModel {
 	INTERFAZ("Interfaz"),

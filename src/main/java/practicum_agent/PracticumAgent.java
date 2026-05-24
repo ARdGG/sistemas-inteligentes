@@ -1,11 +1,10 @@
-package faqs_practicum;
+package practicum_agent;
 
-import es.upm.AgentLauncher.AgentBase;
-import es.upm.AgentLauncher.AgentModel;
-
+import base_agent.AgentBase;
+import base_agent.AgentModel;
 import jade.core.Agent;
 
-public class PracticumAgent extends AgentBase{
+public class PracticumAgent extends AgentBase {
 
 	/*
 	 * 	Notas:

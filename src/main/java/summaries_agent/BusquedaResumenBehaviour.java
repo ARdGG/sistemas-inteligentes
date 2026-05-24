@@ -1,4 +1,4 @@
-package resumenes_asignaturas;
+package summaries_agent;
 
 import java.io.File;
 import java.io.IOException;

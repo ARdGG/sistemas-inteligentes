@@ -23,15 +23,16 @@ public class AgenteRutas extends AgentBase {
             @Override
             public void action() {
                 ACLMessage msg = null;
-                ArrayList<String> res = new ArrayList<>();
                 try {
                     msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
                     if (msg == null) {
                         return; // lanzar error
                     }
                     // receive
+                    String contenido = msg.getContent();
+                    System.out.println("Mensaje recibido " + contenido);
                     String prompt =
-                            "Cómo llegar desde " + msg.getContent() + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
+                            "Cómo llegar desde " + contenido + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
                     URL url = new URL("http://localhost:11434/api/generate");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
@@ -39,12 +40,12 @@ public class AgenteRutas extends AgentBase {
                     conn.setDoOutput(true);
                     String json = "{ \"model\": \"llama3:8b\", " +
                             "\"prompt\": \"" +
-                            prompt.replace("\"", "\\\\\"") +
+                            prompt.replace("\"", "\\\"") +
                             "\", " +
                             "\"stream\": false }";
 
                     OutputStream os = conn.getOutputStream();
-                    os.write(json.getBytes(StandardCharsets.UTF_8));
+                    os.write(json.getBytes("UTF-8"));
                     os.flush();
                     os.close();
                     BufferedReader br =
@@ -58,22 +59,16 @@ public class AgenteRutas extends AgentBase {
                     while ((line = br.readLine()) != null) {
                         result.append(line);
                     }
-                    System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result);
+                    System.out.println("Ruta para llegar a la escuela desde " + contenido + ": " + result);
                     // Send result.toString()
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    res.add(result.toString());
-                    response.setContentObject((Serializable) res);
+                    response.setContent(result.toString());
                     send(response);
                 } catch (Exception ex) {
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    try {
-                        res.add("Ha habido un error");
-                        response.setContentObject((Serializable) res);
-                    } catch (IOException e) {
-                        System.err.println("Error al enviar error");
-                    }
+                    response.setContent("Ha habido un error");
                     send(response);
                     System.err.println("error en agenteRutas");
                     ex.printStackTrace();

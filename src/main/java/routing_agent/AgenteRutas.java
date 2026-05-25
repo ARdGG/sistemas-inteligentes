@@ -1,13 +1,8 @@
 package routing_agent;
 
+import base_agent.AgentBase;
 import base_agent.AgentModel;
-import jade.content.lang.sl.SLCodec;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
-import jade.domain.DFService;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
@@ -18,22 +13,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class AgenteRutas extends Agent {
+public class AgenteRutas extends AgentBase {
     @Override
     protected void setup() {
-        DFAgentDescription dfd = new DFAgentDescription();
-        dfd.setName(getAID());
-        ServiceDescription sd = new ServiceDescription();
-        sd.setName("Obtener ruta hasta la escuela");
-        sd.setType(AgentModel.RUTAS.getValue());
-        sd.addOntologies("ontologia");
-        sd.addLanguages(new SLCodec().getName());
-        dfd.addServices(sd);
-        try{
-            DFService.register(this,dfd);
-        } catch (FIPAException e) {
-            throw new RuntimeException(e);
-        }
+        this.type = AgentModel.RUTAS;
+        registerAgentDF();
+
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {

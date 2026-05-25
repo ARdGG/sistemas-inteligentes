@@ -12,68 +12,76 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 
 public class AgenteRutas extends AgentBase {
-    @Override
-    protected void setup() {
-        this.type = AgentModel.RUTAS;
-        registerAgentDF();
+	@Override
+	protected void setup() {
+		this.type = AgentModel.RUTAS;
+		registerAgentDF();
 
-        addBehaviour(new CyclicBehaviour() {
-            @Override
-            public void action() {
-                ACLMessage msg = null;
-                try {
-                    msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
-                    if (msg == null) {
-                        return; // lanzar error
-                    }
-                    // receive
-                    String contenido = msg.getContent();
-                    System.out.println("Mensaje recibido " + contenido);
-                    String prompt =
-                            "Cómo llegar desde " + contenido + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
-                    URL url = new URL("http://localhost:11434/api/generate");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    conn.setRequestProperty("Content-Type", "application/json");
-                    conn.setDoOutput(true);
-                    String json = "{ \"model\": \"llama3:8b\", " +
-                            "\"prompt\": \"" +
-                            prompt.replace("\"", "\\\"") +
-                            "\", " +
-                            "\"stream\": false }";
+		addBehaviour(new CyclicBehaviour() {
+			@Override
+			public void action() {
+				ACLMessage msg = null;
+				try {
+					msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
+					if (msg == null) {
+						return; // lanzar error
+					}
+					// receive
+					String contenido = msg.getContent();
+					System.out.println("Mensaje recibido " + contenido);
+					String prompt =
+							"Cómo llegar desde " + contenido + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
+					URL url = new URL("http://localhost:11434/api/generate");
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+					conn.setRequestMethod("POST");
+					conn.setRequestProperty("Content-Type", "application/json");
+					conn.setDoOutput(true);
+					String json = "{ \"model\": \"llama3:8b\", " +
+							"\"prompt\": \"" +
+							prompt.replace("\"", "\\\"") +
+							"\", " +
+							"\"stream\": false }";
 
-                    OutputStream os = conn.getOutputStream();
-                    os.write(json.getBytes("UTF-8"));
-                    os.flush();
-                    os.close();
-                    BufferedReader br =
-                            new BufferedReader(
-                                    new InputStreamReader(
-                                            conn.getInputStream()
-                                    )
-                            );
-                    StringBuilder result = new StringBuilder();
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        result.append(line);
-                    }
-                    System.out.println("Ruta para llegar a la escuela desde " + contenido + ": " + result);
-                    // Send result.toString()
-                    ACLMessage response = msg.createReply();
-                    response.setPerformative(ACLMessage.INFORM);
-                    response.setContent(result.toString());
-                    send(response);
-                } catch (Exception ex) {
-                    ACLMessage response = msg.createReply();
-                    response.setPerformative(ACLMessage.INFORM);
-                    response.setContent("Ha habido un error");
-                    send(response);
-                    System.err.println("error en agenteRutas");
-                    ex.printStackTrace();
-                }
-            }
-        });
-    }
-}
+					OutputStream os = conn.getOutputStream();
+					os.write(json.getBytes("UTF-8"));
+					os.flush();
+					os.close();
+					BufferedReader br =
+							new BufferedReader(
+									new InputStreamReader(
+											conn.getInputStream()
+											)
+									);
+					StringBuilder result = new StringBuilder();
+					String line;
+					while ((line = br.readLine()) != null) {
+						result.append(line);
+					}
+					br.close();
+					
+					JSONObject jsonRespuesta = new JSONObject(result.toString());
+                    String respuestaFinal = jsonRespuesta.getString("response");
+					
+
+					System.out.println("Ruta para llegar a la escuela desde " + contenido + ": " + respuestaFinal);
+					// Send result.toString()
+					ACLMessage response = msg.createReply();
+					response.setPerformative(ACLMessage.INFORM);
+					response.setContent(respuestaFinal.toString());
+					send(response);
+					} catch (Exception ex) {
+						ACLMessage response = msg.createReply();
+						response.setPerformative(ACLMessage.INFORM);
+						response.setContent("Ha habido un error");
+						send(response);
+						System.err.println("error en agenteRutas");
+						ex.printStackTrace();
+					}
+				}
+			});
+		}
+	}

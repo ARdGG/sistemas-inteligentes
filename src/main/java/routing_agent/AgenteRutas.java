@@ -23,14 +23,13 @@ public class AgenteRutas extends AgentBase {
             @Override
             public void action() {
                 ACLMessage msg = null;
-                ArrayList<String> res = new ArrayList<>();
                 try {
                     msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
                     if (msg == null) {
                         return; // lanzar error
                     }
                     // receive
-                    String contenido = (String) msg.getContentObject();
+                    String contenido = msg.getContent();
                     System.out.println("Mensaje recibido " + contenido);
                     String prompt =
                             "Cómo llegar desde " + contenido + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
@@ -64,18 +63,12 @@ public class AgenteRutas extends AgentBase {
                     // Send result.toString()
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    res.add(result.toString());
-                    response.setContentObject((Serializable) res);
+                    response.setContent(result.toString());
                     send(response);
                 } catch (Exception ex) {
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    try {
-                        res.add("Ha habido un error");
-                        response.setContentObject((Serializable) res);
-                    } catch (IOException e) {
-                        System.err.println("Error al enviar error");
-                    }
+                    response.setContent("Ha habido un error");
                     send(response);
                     System.err.println("error en agenteRutas");
                     ex.printStackTrace();

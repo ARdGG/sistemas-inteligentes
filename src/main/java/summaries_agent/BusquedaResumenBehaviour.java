@@ -124,7 +124,6 @@ public class BusquedaResumenBehaviour extends CyclicBehaviour{
 
     private String recortarDescripcion(String texto){
         String textoLower = texto.toLowerCase();
-
         int indiceInicio = textoLower.lastIndexOf(CAB_DESCRIPCION);
         int indiceFinal = textoLower.indexOf(CAB_TEMARIO, indiceInicio);
         if(indiceInicio == -1 || indiceFinal == -1){

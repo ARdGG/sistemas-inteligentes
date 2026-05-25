@@ -42,7 +42,7 @@ public class AgenteCliente extends Agent {
                     System.out.println("ComportamientoUsuario Resumen");
                     Utils.enviarMensaje(myAgent,"Resumen",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
-                    temp = procesarMensaje(msg);
+                    temp = msg.getContent();
                     gui.getFrame().getRespuestaResumenTexto().setText(temp);
                     break;
                 case 1:
@@ -50,7 +50,7 @@ public class AgenteCliente extends Agent {
                     System.out.println("ComportamientoUsuario Practicum");
                     Utils.enviarMensaje(myAgent,"Practicum",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
-                    temp = procesarMensaje(msg);
+                    temp = msg.getContent();
                     gui.getFrame().getRespuestaPracticumTexto().setText(temp);
                     break;
                 case 2:
@@ -58,7 +58,7 @@ public class AgenteCliente extends Agent {
                     System.out.println("ComportamientoUsuario Llegar");
                     Utils.enviarMensaje(myAgent,"Rutas",texto);
                     msg = blockingReceive(MessageTemplate.MatchPerformative(ACLMessage.INFORM));
-                    temp = procesarMensaje(msg);
+                    temp = msg.getContent();
                     gui.getFrame().getRespuestaLlegarTexto().setText(temp);
                     break;
                 default:
@@ -67,23 +67,6 @@ public class AgenteCliente extends Agent {
             myAgent.doWait(500);
             gui.getFrame().cambiarEstadoBotones(true);
 
-        }
-
-        private String procesarMensaje(ACLMessage message) {
-            String respuesta = "";
-            try
-            {
-                List<String> mensajes=(List<String>)message.getContentObject();
-                for(int i=0;i<mensajes.size();i++)
-                {
-                    respuesta = respuesta + "\n" + mensajes.get(i);
-                }
-            }
-            catch (UnreadableException e)
-            {
-                e.printStackTrace();
-            }
-            return respuesta;
         }
     }
 }

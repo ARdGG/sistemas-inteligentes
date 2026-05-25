@@ -41,13 +41,7 @@ public class BusquedaResumenBehaviour extends CyclicBehaviour{
 	private void enviarRespuesta(ACLMessage message, String answer) {
         ACLMessage reply = message.createReply();
         reply.setPerformative(ACLMessage.INFORM);
-        try {
-            ArrayList<String> contenido = new ArrayList<>();
-            contenido.add(answer);
-            reply.setContentObject(contenido);   // objeto serializado, no texto plano
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        reply.setContent(answer);
         myAgent.send(reply);
     }
 
@@ -56,7 +50,7 @@ public class BusquedaResumenBehaviour extends CyclicBehaviour{
 	 */
 	private void processIncomingMesage(ACLMessage message) {
         try {
-            String userSubjectRaw = (String) message.getContentObject();
+            String userSubjectRaw = message.getContent();
 		    System.out.println("Mensaje recibido de " + message.getSender().getLocalName() + ": " + userSubjectRaw);
 
             String userSubject = normalizarAsignatura(userSubjectRaw);

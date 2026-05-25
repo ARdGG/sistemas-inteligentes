@@ -16,7 +16,7 @@
       "name": "JADE + ResumenesAgent",
       "request": "launch",
       "mainClass": "jade.Boot",
-      "args": "-gui cliente:user_agent.AgenteCliente;practicum:practicum_agent.PracticumAgent;resumen:summaries_agent.ResumenesAgent"    
+      "args": "-gui cliente:user_agent.AgenteCliente;practicum:practicum_agent.PracticumAgent;resumen:summaries_agent.ResumenesAgent;alfredo:routing_agent.AgenteRutas"    
     }
   ]
 

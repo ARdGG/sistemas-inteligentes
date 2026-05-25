@@ -17,7 +17,7 @@ public class BusquedaResumenBehaviour extends CyclicBehaviour{
     String guiasDirectory;
     private static final MessageTemplate MT = MessageTemplate.MatchPerformative(ACLMessage.REQUEST);
 
-    private static final String CAB_DESCRIPCION = "descripción de la asignatura";
+    private static final String CAB_DESCRIPCION = "1. descripción de la asignatura";
     private static final String CAB_TEMARIO = "temario de la asignatura";
 
 
@@ -137,7 +137,7 @@ public class BusquedaResumenBehaviour extends CyclicBehaviour{
             System.out.println("No existe alguna de las cabeceras de la guia de estudio");
             return null;
         }
-        //OJO, podría no haber cabecera descripción
+                
         return texto.substring(indiceInicio + CAB_DESCRIPCION.length(), indiceFinal); 
     }
 

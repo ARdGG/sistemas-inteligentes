@@ -1,4 +1,4 @@
-﻿package user_agent;
+package user_agent;
 
 public class MainGUI extends Thread {
 

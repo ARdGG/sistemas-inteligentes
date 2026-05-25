@@ -1,4 +1,4 @@
-﻿package user_agent;
+package user_agent;
 
 import javax.swing.*;
 import javax.swing.border.Border;

@@ -1,11 +1,8 @@
 package summaries_agent;
-import jade.core.Agent;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
+import base_agent.AgentBase;
+import base_agent.AgentModel;
 
-public class ResumenesAgent extends Agent{
+public class ResumenesAgent extends AgentBase{
 	
 	@Override
 	protected void setup() {
@@ -22,19 +19,8 @@ public class ResumenesAgent extends Agent{
 		System.out.println("Usando rutas:\nGuias = " + guiasDirectory);
 		
         //Configurar agente
-        ServiceDescription sd = new ServiceDescription();
-        sd.setType("Resumen");
-        sd.setName(getLocalName());
-        DFAgentDescription dfdescription = new DFAgentDescription();
-        dfdescription.setName(getAID());
-        dfdescription.addServices(sd);
-        //Dar de alta el agente en el DF
-        try {
-            DFService.register(this, dfdescription);
-        } catch (FIPAException e) {
-            doDelete();
-            e.printStackTrace();
-        }
+        this.type = AgentModel.RESUMEN;
+        registerAgentDF();
 
 		//Agregamos el comportamiento de Busqueda
 		BusquedaResumenBehaviour searchBehaviour = new BusquedaResumenBehaviour(guiasDirectory);
@@ -45,10 +31,6 @@ public class ResumenesAgent extends Agent{
 	protected void takeDown() {
 		System.out.println("Arrivederci :D");
 
-        try {
-            DFService.deregister(this);
-        } catch (FIPAException e) {
-            e.printStackTrace();
-        }
+        deregisterAgentDF();
 	}
 }

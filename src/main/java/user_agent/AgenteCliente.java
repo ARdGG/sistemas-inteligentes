@@ -1,4 +1,4 @@
-﻿package user_agent;
+package user_agent;
 
 import jade.core.Agent;
 

@@ -22,8 +22,9 @@ public class AgenteRutas extends AgentBase {
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {
+                ACLMessage msg = null;
                 try {
-                    ACLMessage msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
+                    msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
                     if (msg == null) {
                         return; // lanzar error
                     }
@@ -63,6 +64,10 @@ public class AgenteRutas extends AgentBase {
                     response.setContent(result.toString());
                     send(response);
                 } catch (Exception ex) {
+                    ACLMessage response = msg.createReply();
+                    response.setPerformative(ACLMessage.INFORM);
+                    response.setContent("Ha habido un error");
+                    send(response);
                     System.err.println("error en agenteRutas");
                 }
             }

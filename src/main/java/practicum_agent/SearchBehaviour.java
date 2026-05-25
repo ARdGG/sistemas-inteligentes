@@ -121,14 +121,12 @@ public class SearchBehaviour extends CyclicBehaviour {
 	 * Crea un mensaje de respuesta de tipo INFORM y lo envia
 	 */
 	private void sendReply(ACLMessage message, String answer) {
-		try {
+		
 			ACLMessage reply = message.createReply();
 			reply.setPerformative(ACLMessage.INFORM);
-			reply.setContentObject(answer);
+			reply.setContent(answer);
 			
 			myAgent.send(reply);
-		} catch (IOException e) {
-			System.out.println("Error al serializar respuesta: " + e.getMessage());
-		}
+		
 	}
 }

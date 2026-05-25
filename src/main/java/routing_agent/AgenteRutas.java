@@ -1,5 +1,6 @@
 package routing_agent;
 
+import base_agent.AgentModel;
 import jade.content.lang.sl.SLCodec;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -25,7 +26,7 @@ public class AgenteRutas extends Agent {
         dfd.setName(getAID());
         ServiceDescription sd = new ServiceDescription();
         sd.setName("Obtener ruta hasta la escuela");
-        sd.setType("Ruta");
+        sd.setType(String.valueOf(AgentModel.RUTAS));
         sd.addOntologies("ontologia");
         sd.addLanguages(new SLCodec().getName());
         dfd.addServices(sd);
@@ -73,7 +74,7 @@ public class AgenteRutas extends Agent {
                     }
                     System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result);
                     // Send result.toString()
-                    enviarMensaje(this.getAgent(),"Mostrar ruta",result.toString());
+                    enviarMensaje(this.getAgent(), String.valueOf(AgentModel.INTERFAZ),result.toString());
                 } catch (Exception ex) {
                     System.err.println("error en agenteRutas");
                 }

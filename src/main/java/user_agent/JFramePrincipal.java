@@ -126,12 +126,12 @@ public class JFramePrincipal extends JFrame {
         pregunta.setLayout(new BorderLayout(5, 5));
         pregunta.setBorder(finalBorderPreguntaPracticum);
 
-        JLabel lblNewLabel_1 = new JLabel("Nombre Asignatura:");
-        lblNewLabel_1.setToolTipText("Introduce el nombre de la asignatura");
+        JLabel lblNewLabel_1 = new JLabel("Pregunta:");
+        lblNewLabel_1.setToolTipText("Introduce la pregunta sobre el Practicum");
         pregunta.add(lblNewLabel_1, BorderLayout.NORTH);
 
         preguntaTexto = new JTextField();
-        preguntaTexto.setToolTipText("Introduce el nombre de la asignatura");
+        preguntaTexto.setToolTipText("Introduce la pregunta sobre el Practicum");
         preguntaTexto.setColumns(20);
         pregunta.add(preguntaTexto, BorderLayout.CENTER);
 
@@ -181,11 +181,11 @@ public class JFramePrincipal extends JFrame {
         datosDireccion.setLayout(new BorderLayout(5, 5));
 
         JLabel lblNewLabel_1_1 = new JLabel("Dirección de inicio:");
-        lblNewLabel_1_1.setToolTipText("Introduce el nombre de la asignatura");
+        lblNewLabel_1_1.setToolTipText("Introduce el lugar desde el que calcular la ruta");
         datosDireccion.add(lblNewLabel_1_1, BorderLayout.NORTH);
 
         direccionTexto = new JTextField();
-        direccionTexto.setToolTipText("Introduce el nombre de la asignatura");
+        direccionTexto.setToolTipText("Introduce el lugar desde el que calcular la ruta");
         direccionTexto.setColumns(20);
         datosDireccion.add(direccionTexto, BorderLayout.CENTER);
 

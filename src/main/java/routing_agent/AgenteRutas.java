@@ -6,11 +6,10 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class AgenteRutas extends AgentBase {
@@ -23,6 +22,7 @@ public class AgenteRutas extends AgentBase {
             @Override
             public void action() {
                 ACLMessage msg = null;
+                ArrayList<String> res = new ArrayList<>();
                 try {
                     msg = receive(MessageTemplate.MatchPerformative(ACLMessage.REQUEST));
                     if (msg == null) {
@@ -61,12 +61,18 @@ public class AgenteRutas extends AgentBase {
                     // Send result.toString()
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    response.setContent(result.toString());
+                    res.add(result.toString());
+                    response.setContentObject((Serializable) res);
                     send(response);
                 } catch (Exception ex) {
                     ACLMessage response = msg.createReply();
                     response.setPerformative(ACLMessage.INFORM);
-                    response.setContent("Ha habido un error");
+                    try {
+                        res.add("Ha habido un error");
+                        response.setContentObject((Serializable) res);
+                    } catch (IOException e) {
+                        System.err.println("Error al enviar error");
+                    }
                     send(response);
                     System.err.println("error en agenteRutas");
                 }

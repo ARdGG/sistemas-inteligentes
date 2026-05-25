@@ -52,13 +52,7 @@ public class SearchBehaviour extends CyclicBehaviour {
 	 * Extrae el contenido del mensaje recibido, realiza la busqueda y envia la respuesta al remitente 
 	 */
 	private void processIncomingMesage(ACLMessage message) {
-		String userQuery;
-		try {
-			userQuery = (String) message.getContentObject();
-		} catch (UnreadableException e) {
-			//Si no sigue el protocolo intenta leer como texto plano
-			userQuery = message.getContent();
-		}
+		String userQuery = message.getContent();
 		System.out.println("Mensaje recibido de " + message.getSender().getLocalName() + ": " + userQuery);
 		
 		String answer = searchFaq(userQuery);
@@ -130,10 +124,7 @@ public class SearchBehaviour extends CyclicBehaviour {
 		try {
 			ACLMessage reply = message.createReply();
 			reply.setPerformative(ACLMessage.INFORM);
-			
-			List<String> response = new ArrayList<>();
-			response.add(answer);
-			reply.setContentObject((Serializable) response);
+			reply.setContentObject(answer);
 			
 			myAgent.send(reply);
 		} catch (IOException e) {

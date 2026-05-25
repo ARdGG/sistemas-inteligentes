@@ -17,7 +17,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static base_agent.Utils.enviarMensaje;
 
 public class AgenteRutas extends Agent {
     @Override
@@ -74,7 +73,10 @@ public class AgenteRutas extends Agent {
                     }
                     System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result);
                     // Send result.toString()
-                    enviarMensaje(this.getAgent(), AgentModel.INTERFAZ.getValue(),result.toString());
+                    ACLMessage response = msg.createReply();
+                    response.setPerformative(ACLMessage.INFORM);
+                    response.setContent(result.toString());
+                    send(response);
                 } catch (Exception ex) {
                     System.err.println("error en agenteRutas");
                 }

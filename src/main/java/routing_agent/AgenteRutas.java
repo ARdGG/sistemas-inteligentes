@@ -9,6 +9,7 @@ import jade.lang.acl.MessageTemplate;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 
@@ -30,7 +31,7 @@ public class AgenteRutas extends AgentBase {
                     }
                     // receive
                     String prompt =
-                            "Generate a route to go from " + msg.getContent() + "to Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid";
+                            "Cómo llegar desde " + msg.getContent() + " a la Escuela Tecnica Superior de Ingenieros Informáticos de la Universidad Politécnica de Madrid. Devuelve el resultado de forma breve y numerada";
                     URL url = new URL("http://localhost:11434/api/generate");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
@@ -43,7 +44,7 @@ public class AgenteRutas extends AgentBase {
                             "\"stream\": false }";
 
                     OutputStream os = conn.getOutputStream();
-                    os.write(json.getBytes());
+                    os.write(json.getBytes(StandardCharsets.UTF_8));
                     os.flush();
                     os.close();
                     BufferedReader br =
@@ -75,6 +76,7 @@ public class AgenteRutas extends AgentBase {
                     }
                     send(response);
                     System.err.println("error en agenteRutas");
+                    ex.printStackTrace();
                 }
             }
         });

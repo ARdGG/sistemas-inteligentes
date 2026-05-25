@@ -26,7 +26,7 @@ public class AgenteRutas extends Agent {
         dfd.setName(getAID());
         ServiceDescription sd = new ServiceDescription();
         sd.setName("Obtener ruta hasta la escuela");
-        sd.setType(String.valueOf(AgentModel.RUTAS));
+        sd.setType(AgentModel.RUTAS.getValue());
         sd.addOntologies("ontologia");
         sd.addLanguages(new SLCodec().getName());
         dfd.addServices(sd);
@@ -74,7 +74,7 @@ public class AgenteRutas extends Agent {
                     }
                     System.out.println("Ruta para llegar a la escuela desde " + msg.getContent() + ": " + result);
                     // Send result.toString()
-                    enviarMensaje(this.getAgent(), String.valueOf(AgentModel.INTERFAZ),result.toString());
+                    enviarMensaje(this.getAgent(), AgentModel.INTERFAZ.getValue(),result.toString());
                 } catch (Exception ex) {
                     System.err.println("error en agenteRutas");
                 }

@@ -36,11 +36,5 @@ public class PracticumAgent extends AgentBase {
 		//Agregamos el comportamiento de Busqueda
 		SearchBehaviour searchBehaviour = new SearchBehaviour(indexDirectory);
 		addBehaviour(searchBehaviour);
-	}
-	
-	@Override
-	protected void takeDown() {
-		System.out.println("Lo lamento... 8==D");
-	}
-	
+	}	
 }
